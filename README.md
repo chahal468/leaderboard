@@ -2,8 +2,8 @@
 simple project with node, express and mongodb to create restful api's
 
 # How to start Project with below simple steps 
-npm install
-npm run start
+npm install \n
+npm run start \n
 open browser and run below url
 http://localhost:3000/api-docs/
 
