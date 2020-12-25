@@ -1,0 +1,236 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "LEADERBOARD",
+      "description": "Guys, Happy Christmas and Happy Holidays. Stay safe and healthy.",
+      "license": {
+        "name": "Surender Chahal - Linked In",
+        "url": "https://www.linkedin.com/in/surender-chahal-59ab5a9/"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1/",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/users": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Get all users in leaderboard",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Users"
+              }
+            }
+          }
+        }
+      },
+      "/addUser": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Create a new user in the leaderboard",
+          "description": "Create new user in leaderboard",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User that we want to create",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "New user is created",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "/user/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of user that we want to find",
+            "type": "string"
+          }
+        ],
+        "put": {
+          "summary": "Update user with give ID",
+          "tags": [
+            "Users"
+          ],
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/updateUser"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User is updated",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "patch": {
+            "summary": "Update user points for given ID",
+            "tags": [
+              "Users"
+            ],
+            "parameters": [
+              {
+                "name": "action",
+                "in": "query",
+                "required": true,
+                "description": "an action to increase or decrease the score",
+                "type": "integer",
+                "enum": [1, -1]
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "User is updated",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+        "delete": {
+            "summary": "Delete user with given ID",
+            "tags": [
+              "Users"
+            ],
+            "responses": {
+              "200": {
+                "description": "User is deleted",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+        }
+      }
+    },
+    "definitions": {
+      "User": {
+        "required": [
+          "name",
+          "_id",
+          "age",
+          "points"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true,
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          },
+          "points": {
+            "type": "number",
+            "minimum": 0
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line": {
+                "type": "string"
+              },
+              "line2": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "zipcode": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "updateUser": {
+        "required": [],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          },
+          "points": {
+            "type": "number",
+            "minimum": 0
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line": {
+                "type": "string"
+              },
+              "line2": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "zipcode": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Users": {
+        "type": "array",
+        "$ref": "#/definitions/User"
+      }
+    }
+  }

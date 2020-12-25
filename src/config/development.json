@@ -1,0 +1,7 @@
+{
+    "LSR_REST_BASE_URL": "http://lsr-service-it01.paas-app-west-np.tsl.telus.com/v1/intercarrierRequest/v1",
+    "LSR_SEARCH_URL": "/localServiceCommunication/search",
+    "SERVICE_PROVIDER_URL": "/v1/localServiceOrdering/v1/serviceProvider?regionId=",
+    "LSR_URL": "/localServiceRequest",
+    "LSC_URL": "/v1/localServiceOrdering/v1/localServiceConfirmation"
+}
