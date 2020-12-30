@@ -11,6 +11,9 @@ open browser and run below url
 
 http://localhost:3000/api-docs/
 
+# Run tests
+npm test
+
  # while in dev mode, its better to start using below
  nodemon ./src/server.js
 
